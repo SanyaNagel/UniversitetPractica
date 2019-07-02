@@ -1,10 +1,15 @@
 package sample;
 
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 public class Map {
 
     Map() {
+        Cell rect = new Cell();
+
+
         Corridor corridor1 = new Corridor(5, 20);
         Corridor corridor2 = new Corridor(3, 3, corridor1);
         Audience audience1 = new Audience(2, 2, 3, 7);    //Устанавливаем координаты расположения в коридоре

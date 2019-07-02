@@ -16,7 +16,7 @@ public class Main extends Application {
             primaryStage.setScene(new Scene(root, 600, 400));
             primaryStage.show();
 
-        }catch (Exception ex){
+             }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
     }

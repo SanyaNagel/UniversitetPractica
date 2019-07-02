@@ -1,13 +1,9 @@
 package sample.fxml;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
 public class Controller {
 
@@ -18,11 +14,17 @@ public class Controller {
     private URL location;
 
     @FXML
-    void initialize() throws IOException {
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/fxml/sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 600, 400));
-        primaryStage.show();
+    private AnchorPane PanelLeft;
+
+    @FXML
+    private AnchorPane PanelRight;
+
+    @FXML
+    void initialize() {
+        assert PanelLeft != null : "fx:id=\"PanelLeft\" was not injected: check your FXML file 'sample.fxml'.";
+        assert PanelRight != null : "fx:id=\"PanelRight\" was not injected: check your FXML file 'sample.fxml'.";
+
     }
 }
+
+//Rectangle r = new Rectangle( 100, 100, 50, 50 );
