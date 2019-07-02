@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="First Commit">
-      <change afterPath="$PROJECT_DIR$/src/sample/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/Corridor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/Corridor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/Map.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/fxml/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/fxml/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/fxml/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulatorStudent/sample/fxml/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/fxml/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxml/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/fxml/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/fxml/sample.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="First Commit" />
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -73,24 +61,18 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/module-info.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
               <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/fxml/setting.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -171,11 +153,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/fxml/sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="250" selection-start-line="11" selection-start-column="250" selection-end-line="11" selection-end-column="250" />
+              <caret line="11" column="238" selection-start-line="11" selection-start-column="238" selection-end-line="11" selection-end-column="238" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -407,7 +389,21 @@
       <option name="project" value="LOCAL" />
       <updated>1562063528737</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="First Commit">
+      <created>1562091518454</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1562091518455</updated>
+    </task>
+    <task id="LOCAL-00005" summary="First Commit">
+      <created>1562091621214</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1562091621214</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -427,7 +423,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329582" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.329582" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.329582" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -528,14 +524,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/fxml/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="250" selection-start-line="11" selection-start-column="250" selection-end-line="11" selection-end-column="250" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/fxml/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -552,6 +540,18 @@
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/fxml/setting.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/fxml/sample.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="238" selection-start-line="11" selection-start-column="238" selection-end-line="11" selection-end-column="238" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
   </component>
   <component name="masterDetails">
