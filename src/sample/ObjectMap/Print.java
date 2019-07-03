@@ -1,6 +1,6 @@
-package sample;
+package sample.ObjectMap;
 
-public class Print extends Object {
+public class Print extends ObjectMap {
     public Print(int width, int height, int x, int y){
         _width = width;
         _height = height;

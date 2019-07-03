@@ -1,4 +1,6 @@
-package sample;
+package sample.ObjectMap;
+
+import sample.Map;
 
 import java.util.ArrayList;
 import java.util.Timer;

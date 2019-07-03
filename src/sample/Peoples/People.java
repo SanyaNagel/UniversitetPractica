@@ -1,4 +1,6 @@
-package sample;
+package sample.Peoples;
+
+import sample.ObjectMap.Corridor;
 
 import java.util.ArrayList;
 
@@ -20,15 +22,15 @@ public class People {
         _speed = speed;
     }
 
-    int getSpeed(){
+    public int getSpeed(){
         return _speed;
     }
-    void setCoordinate(int x, int y){
+    public void setCoordinate(int x, int y){
         _coordinate[0] = x;
         _coordinate[1] = y;
     }
 
-    void setCoordinate(int x){
+    public void setCoordinate(int x){
         _coordinate[0] = x;
     }
 
@@ -39,7 +41,7 @@ public class People {
     }
 
     //Получаем координаты
-    int[] getCoordinate(){
+    public int[] getCoordinate(){
         return _coordinate;
     }
 
@@ -48,12 +50,12 @@ public class People {
         _route = route;
     }
 
-    Corridor getNextPath(){
+    public Corridor getNextPath(){
         _currentCorridor = _route.get(0);
         return _route.get(0);
     }
 
-    void nextCorridor(){
+    public void nextCorridor(){
         _route.remove(0);
     }
 

@@ -1,12 +1,14 @@
 package sample;
 
-import javafx.scene.paint.Color;
+import sample.ObjectMap.Audience;
+import sample.ObjectMap.Corridor;
+import sample.Peoples.People;
 
 import java.util.ArrayList;
 
 public class Map {
 
-    Map() {
+    public Map() {
         Cell rect = new Cell();
 
 

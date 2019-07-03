@@ -1,6 +1,6 @@
-package sample;
+package sample.ObjectMap;
 
-public abstract class Object {
+public abstract class ObjectMap {
     //Получаем координаты объекта
     public abstract int[] getCoordinate();
 

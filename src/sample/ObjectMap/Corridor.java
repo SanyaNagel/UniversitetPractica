@@ -1,13 +1,17 @@
-package sample;
+package sample.ObjectMap;
+
+import sample.ObjectMap.ObjectMap;
+
+import sample.Peoples.People;
 
 import java.util.ArrayList;
 
 public class Corridor {
-    Corridor(int width, int height){
+    public Corridor(int width, int height){
         mapCorridor = new boolean[width][height];
     }
 
-    Corridor(int width, int height, Corridor addCorridor){
+    public Corridor(int width, int height, Corridor addCorridor){
         _listCorridor.add(addCorridor);
         mapCorridor = new boolean[width][height];
     }
@@ -18,7 +22,7 @@ public class Corridor {
     }
 
     //Добавляем объекты в коридор и закрашиваем эти места
-    public void setObject(Object object, int x, int y){
+    public void setObject(ObjectMap object, int x, int y){
         for(int i = x; i < object.getWidth(); i++)
             for(int j = y; j < object.getHeight(); j++)
                 mapCorridor[i][j] = true;
@@ -95,7 +99,7 @@ public class Corridor {
         minDegree.recirseDeicstra(degree+_width,this);
     }
 
-    Corridor readyPath(int sum){
+    public Corridor readyPath(int sum){
         for(Corridor corridor: _listCorridor){
             if(sum - _width == corridor.getDegree()){
                 return corridor;
