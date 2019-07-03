@@ -3,6 +3,4 @@ module Simulat {
     requires javafx.controls;
 
     opens sample;
-    //opens FormFxml;
-
 }
