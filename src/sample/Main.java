@@ -13,10 +13,13 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/sample/forms/sample.fxml"));
             primaryStage.setTitle("Hello World");
-            primaryStage.setScene(new Scene(root, 600, 400));
+            Scene scen = new Scene(root, 753, 529);
+            scen.getStylesheets().add(0,"/sample/forms/style.css");
+            primaryStage.setScene(scen);
             primaryStage.show();
 
              }catch (Exception ex){
+            ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
     }
@@ -25,4 +28,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+ // Хендл окна для управления им
+    public static Stage primaryStage;
 }

@@ -7,13 +7,19 @@ import sample.Peoples.People;
 import java.util.ArrayList;
 
 public class Corridor {
-    public Corridor(int width, int height){
-        mapCorridor = new boolean[width][height];
+    public Corridor(int x, int y, int width, int height){
+        coordX = x;
+        coordY = y;
+        mapCorridor = new int[width][height];
+        for(int i = 0; i < width; i++)
+            for(int j = 0; j < height; j++)
+                mapCorridor[i][j] = 0;
     }
 
-    public Corridor(int width, int height, Corridor addCorridor){
+    public Corridor(int x, int y, int width, int height, Corridor addCorridor){
         _listCorridor.add(addCorridor);
-        mapCorridor = new boolean[width][height];
+        mapCorridor = new int[width][height];
+        coordY = y; coordX = x;
     }
 
     //Присоединяем коридор
@@ -22,10 +28,10 @@ public class Corridor {
     }
 
     //Добавляем объекты в коридор и закрашиваем эти места
-    public void setObject(ObjectMap object, int x, int y){
-        for(int i = x; i < object.getWidth(); i++)
-            for(int j = y; j < object.getHeight(); j++)
-                mapCorridor[i][j] = true;
+    public void setObject(ObjectMap object){
+        for(int i = object.getCoordX(); i < object.getWidth()+object.getCoordX(); i++)
+            for(int j = object.getCoordY(); j < object.getCoordY()+object.getHeight(); j++)
+                mapCorridor[i-coordX][j-coordY] = 1;
 
             _listObject.add(object);
     }
@@ -107,21 +113,41 @@ public class Corridor {
         }
         return null;
     }
+    public int getCoordX() {
+        return coordX;
+    }
+
+    public int getCoordY() {
+        return coordY;
+    }
+
     //Поиск свободной координаты Y по линии X
     private int allowCoordinate(int x){
         for(int i = 0; i < _height; i++)
-            if(mapCorridor[x][i] == false) return i;
+            if(mapCorridor[x][i] == 0) return i;
         return -1;  //Если всё занято
     }
-    private boolean[][] mapCorridor;    //Карта коридора состоит из клеток - битовая матрица
+
+    //Проверка, пренадлежат ли координаты этому коридору + влазит ли?
+    public boolean belongsCoord(ObjectMap objectMap){
+        if(coordX+_width >= objectMap.getCoordX()+objectMap.getWidth() && coordY+_height >= objectMap.getCoordY()+objectMap.getHeight())
+            return true;
+        else
+            return false;
+    }
+
+    private int[][] mapCorridor;    //Карта коридора состоит из клеток - битовая матрица
     private ArrayList<Corridor> _listCorridor = new ArrayList<Corridor>();
 
     private ArrayList<Object> _listObject = new ArrayList<Object>();           //Столовые, аудитории, печати
     private ArrayList<People> _listPeople = new ArrayList<People>();           //Люди находящиеся в коридорах
     private int _width;
     private int _height;
-
+    private int coordX;
+    private int coordY;
     //Переменные для алгоритма дейкстры
     private int degree = -1;
     private boolean isChecked = false;
+
+
 }

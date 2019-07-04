@@ -1,32 +1,24 @@
 package sample;
 
+import javafx.scene.control.Alert;
 import sample.ObjectMap.Audience;
-import sample.ObjectMap.Corridor;
+//import sample.ObjectMap.Corridor;
+//import sample.ObjectMap.Print;
+import sample.ObjectMap.Sell;
 import sample.Peoples.People;
 
 import java.util.ArrayList;
 
+import java.io.*;
+import java.util.*;
+
 public class Map {
 
     public Map() {
-        Cell rect = new Cell();
-
-
-        Corridor corridor1 = new Corridor(5, 20);
-        Corridor corridor2 = new Corridor(3, 3, corridor1);
-        Audience audience1 = new Audience(2, 2, 3, 7);    //–£—Å—Ç–∞–Ω–∞–≤–ª–∏–≤–∞–µ–º –∫–æ–æ—Ä–¥–∏–Ω–∞—Ç—ã —Ä–∞—Å–ø–æ–ª–æ–∂–µ–Ω–∏—è –≤ –∫–æ—Ä–∏–¥–æ—Ä–µ
-
-        People people1 = new People();
-        corridor1.setPeople(new People());
-        corridor1.setPeople(new People());
-        corridor1.setPeople(new People());
-
-        corridor2.setObject(audience1, 1, 1);                    //–î–æ–±–∞–≤–ª—è–µ–º –≤ –∫–æ—Ä–∏–¥–æ—Ä
-        audience1.setPeople(new People());
-        Corridor corridor = new Corridor(3,4);
-
-        people1.setPurpose(audience1);                    //–û—Ç–ø—Ä–∞–≤–ª—è–µ–º —á–µ–ª–æ–≤–µ–∫–∞ —Ç—É–¥–∞
-        //people1.setRoute(generationPath(people1.getCurrentCorridor(), corridor));   //–ó–∞–¥–∞—ë–º –ø—É—Ç—å —á–µ–ª–æ–≤–µ–∫—É
+    	mapUniver = new int[width][height];
+    	for(int i = 0; i < width; i++)
+    		for(int j = 0; j < height; j++)
+    			mapUniver[i][j] = 0;
     }
 
     //–ü–æ–∏—Å–∫ –ø—É—Ç–∏ —á–µ—Ä–µ–∑ –∞–ª–≥–æ—Ä–∏—Ç–º –¥–µ–π–∫—Å—Ç—Ä—ã
@@ -48,6 +40,94 @@ public class Map {
             corridor.updateTick();
         }
     }
+    
+    public void setCorridor(Corridor corridor) {
+    	_corridorsList.add(corridor);
+    }
+    public void setAudince(Audience audince) {
+        _audinceList.add(audince);
+    }
+    public void setPrint(Print print) {
+        boolean find = false;
+        for(Corridor corridor: _corridorsList){
+            if(corridor.belongsCoord(print) == true){
+                corridor.setObject(print);
+                find = true;
+                break;
+            }
+        }
+        if(find == false){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("œÂ‰ÛÔÂÊ‰ÂÌËÂ");
+            alert.setContentText("ÕÂ ÔËÌ‡‰ÎÂÊËÚ ÌË Ó‰ÌÓÏÛ ÍÓË‰ÓÛ");
+            alert.show();
+        }
+    }
+    public void setSell(Sell sell) {
+        boolean find = false;
+        for(Corridor corridor: _corridorsList){
+            if(corridor.belongsCoord(sell) == true){
+                corridor.setObject(sell);
+                find = true;
+                break;
+            }
+        }
+        if(find == false){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("œÂ‰ÛÔÂÊ‰ÂÌËÂ");
+            alert.setContentText("ÕÂ ÔËÌ‡‰ÎÂÊËÚ ÌË Ó‰ÌÓÏÛ ÍÓË‰ÓÛ");
+            alert.show();
+        }
+    }
 
+    // «‡„ÛÁËÚ¸ ËÁ Ù‡ÈÎ‡
+    public void loadFromFile(File file){
+
+       /*// ˜ËÚ‡ÂÏ ÔÓÒËÏ‚ÓÎ¸ÌÓ
+        int c;
+        while((c=file.read())!=-1){
+                 
+            	System.out.print((char)c);
+        	} 
+    	  */
+    }
+    
+    public void saveToFile(File file){
+    	//try(FileWriter writer = new FileWriter("notes3.txt", false))
+        
+    	/*for(Corridor corridor: _corridorsList) {
+    		corridor.
+    	}
+           // Á‡ÔËÒ¸ ‚ÒÂÈ ÒÚÓÍË
+            String text = "Hello Gold!";
+            file.write(text);
+            // Á‡ÔËÒ¸ ÔÓ ÒËÏ‚ÓÎ‡Ï
+            file.append('\n');
+            file.append('E');
+             
+            file.flush();*/
+        
+    }
+    		
+    public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	private int width = 30;
+    private int height = 30;
+    private int[][] mapUniver;
     private ArrayList<Corridor> _corridorsList = new ArrayList<Corridor>();
+    private ArrayList<Audience> _audinceList = new ArrayList<Audience>();
 }

@@ -1,17 +1,23 @@
 package sample.ObjectMap;
 
 public class Print extends ObjectMap {
-    public Print(int width, int height, int x, int y){
+    public Print(int x, int y, int width, int height){
         _width = width;
         _height = height;
-        coordinate[0] = x;
-        coordinate[1] = y;
+        coordX= x;
+        coordY = y;
     }
 
     @Override
-    public int[] getCoordinate(){
-        return coordinate ;
+    public int getCoordX() {
+        return coordX;
     }
+    @Override
+    public int getCoordY() {
+        return coordY;
+    }
+
+
     @Override
     public int getWidth(){
         return _width;
@@ -21,7 +27,8 @@ public class Print extends ObjectMap {
         return _height;
     }
 
-    private int[] coordinate = new int[2]; //координаты объекта в коридоре x - coordinate[0], y - coordinate[1]
-    private int _width;
+     private int _width;
     private int _height;
+    private int coordX;
+    private int coordY;
 }

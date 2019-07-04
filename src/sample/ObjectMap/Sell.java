@@ -2,16 +2,11 @@ package sample.ObjectMap;
 
 public class Sell extends ObjectMap {
     //Ширина высота и координаты
-    public Sell(int width, int height, int x, int y){
+    public Sell(int x, int y,int width, int height){
         _width = width;
         _height = height;
-        _coordinate[0] = x;
-        _coordinate[1] = y;
-    }
-
-    @Override
-    public int[] getCoordinate(){
-        return _coordinate ;
+        coordX = x;
+        coordY = y;
     }
 
     @Override
@@ -22,9 +17,18 @@ public class Sell extends ObjectMap {
     public int getHeight(){
         return _height;
     }
-
+    @Override
+    public int getCoordX() {
+        return coordX;
+    }
+    @Override
+    public int getCoordY() {
+        return coordY;
+    }
 
     private int[] _coordinate = new int[2]; //координаты объекта в коридоре x - coordinate[0], y - coordinate[1]
     private int _width;
     private int _height;
+    private int coordX;
+    private int coordY;
 }

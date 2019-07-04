@@ -21,5 +21,7 @@ public class University {
         }, 0, 1);
     }
 
+    public Map getMap() {return map;}
+    
     private Map map;
 }
