@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/sample/forms/sample.fxml"));
-            primaryStage.setTitle("Hello World");
+            primaryStage.setTitle("Симулятор студента!");
             Scene scen = new Scene(root, 753, 529);
             scen.getStylesheets().add(0,"/sample/forms/style.css");
             primaryStage.setScene(scen);

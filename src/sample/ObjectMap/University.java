@@ -1,6 +1,10 @@
 package sample.ObjectMap;
 
+import sample.Group;
 import sample.Map;
+import sample.Peoples.People;
+import sample.Peoples.Student;
+import sample.Peoples.Teacher;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -10,18 +14,70 @@ public class University {
 
     public University(){
         map = new Map();
+        univer = this;
+        
+    }
 
-        ///////////–¢—É—Ç –∑–∞–ø—É—Å—Ç–∏–º —Ç–∞–π–º–µ—Ä –∫–æ—Ç–æ—Ä—ã–π –±—É–¥–µ—Ç –≤—ã–∑—ã–≤–∞—Ç—å —Ñ—É–Ω–∫—Ü–∏—é update() –∫–∞–∂–¥—É—é —Å–µ–∫—É–Ω–¥—É////////////////
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+    public static University getUniver() {
+    	return univer;
+    }
+    
+    public void start(){
+        Timer timerCreate = new Timer();
+        timerCreate.schedule(new TimerTask() {
             @Override
             public void run() {
-                map.update();
+            	Student stud = getStudent();
+                if(stud == null)
+                    timerCreate.cancel();
+                else
+                    map.creatPiople(stud);
             }
-        }, 0, 1);
+        }, 0, intervalCreate);
+    }
+
+    public void createGroup(int numberStudent){
+        _listGroup.add(new Group(numberStudent));
+        map.setGroop(_listGroup);
+        ++createGroop;
+    }
+    public  void createTeacher(int numberTeacher){
+        for(int i = 0; i < numberTeacher; i++)
+            _listTeacher.add(new Teacher());
+        ++createTeacher;
+    }
+
+    public void setIntervalCreate(int intervalCreate) {
+        this.intervalCreate = intervalCreate;
+    }
+
+    public Student getStudent(){
+        if(_listGroup.size() == 0) {
+        	System.out.println("ÕÓÎ¸ „ÛÔÔ");
+            return null;
+        }
+        
+        Student buf = _listGroup.get(createGroop-1).popStudent();
+        if(buf == null)
+        {
+        	System.out.println("√ÛÔÔ˚ Á‡ÍÓÌ˜ËÎËÒ¸");
+            _listGroup.remove(createGroop-1);
+            --createGroop;
+            return getStudent();
+        }
+        else{
+        	System.out.println("Õ‡¯ÎË ÒÚÛ‰ÂÌÚ‡");
+            return buf;
+        }
     }
 
     public Map getMap() {return map;}
-    
+
+    private ArrayList<Group> _listGroup = new ArrayList<Group>();
+    private ArrayList<Teacher> _listTeacher = new ArrayList<Teacher>();
     private Map map;
+    private int intervalCreate = 0;
+    private int createGroop = 0;
+    private int createTeacher = 0;
+    private static University univer;
 }

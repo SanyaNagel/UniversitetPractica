@@ -5,24 +5,22 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="202.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="190.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.ControllerSettings">
    <children>
-      <Button layoutX="16.0" layoutY="328.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="156.0" text="Принять" />
-      <TextField layoutX="42.0" layoutY="42.0" prefHeight="25.0" prefWidth="52.0" text="50" />
-      <TextField layoutX="113.0" layoutY="42.0" prefHeight="25.0" prefWidth="52.0" text="30" />
-      <Label layoutX="25.0" layoutY="19.0" text="Размер карты:" />
-      <Label layoutX="28.0" layoutY="44.0" text="X:" />
-      <Label layoutX="99.0" layoutY="46.0" text="Y:" />
-      <TextField layoutX="25.0" layoutY="227.0" prefHeight="25.0" prefWidth="52.0" text="50" />
-      <Label layoutX="25.0" layoutY="201.0" text="Количество студентов:" />
-      <Label layoutX="25.0" layoutY="135.0" text="Интервал создания людей:" />
-      <TextField layoutX="25.0" layoutY="160.0" prefHeight="25.0" prefWidth="52.0" text="1000" />
-      <Label layoutX="85.0" layoutY="164.0" text="ms" />
-      <TextField layoutX="29.0" layoutY="102.0" prefHeight="25.0" prefWidth="52.0" text="50" />
-      <Label layoutX="29.0" layoutY="76.0" text="Количество преподавателей:" />
-      <Button layoutX="25.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Добавить группу" />
-      <Label layoutX="136.0" layoutY="298.0" text="0" />
-      <Label layoutX="30.0" layoutY="296.0" text="Количество групп:" />
+      <Button layoutX="44.0" layoutY="298.0" mnemonicParsing="false" onAction="#clickTack" prefHeight="46.0" prefWidth="96.0" text="Принять" />
+      <Label layoutX="15.0" layoutY="15.0" text="Размер карты:" />
+      <Label layoutX="24.0" layoutY="169.0" text="Количество человек:" />
+      <Label layoutX="20.0" layoutY="62.0" text="Количество преподавателей:" />
+      <Label layoutX="19.0" layoutY="37.0" text="X:" />
+      <TextField fx:id="sizeMapX" layoutX="34.0" layoutY="33.0" prefHeight="25.0" prefWidth="28.0" text="30" />
+      <TextField fx:id="sizeMapY" layoutX="98.0" layoutY="33.0" prefHeight="25.0" prefWidth="28.0" text="50" />
+      <Label layoutX="82.0" layoutY="37.0" text="Y:" />
+      <TextField fx:id="numberPrepod" layoutX="20.0" layoutY="85.0" prefHeight="25.0" prefWidth="38.0" text="10" />
+      <TextField fx:id="numberStudent" layoutX="22.0" layoutY="188.0" prefHeight="25.0" prefWidth="38.0" text="20" />
+      <Button layoutX="22.0" layoutY="229.0" mnemonicParsing="false" onAction="#addGroup" text="Добавить группу" />
+      <Label layoutX="19.0" layoutY="268.0" text="Количество групп:" />
+      <Label fx:id="numberGroupText" layoutX="126.0" layoutY="270.0" text="0" />
+      <Label layoutX="19.0" layoutY="115.0" text="Интервал создания студентов:" />
+      <TextField fx:id="studentShow" layoutX="20.0" layoutY="138.0" prefHeight="25.0" prefWidth="49.0" text="1000" />
    </children>
 </AnchorPane>

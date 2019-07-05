@@ -2,7 +2,8 @@ package sample;
 
 import javafx.scene.control.Alert;
 import sample.ObjectMap.Audience;
-//import sample.ObjectMap.Corridor;
+import sample.ObjectMap.Corridor;
+import sample.ObjectMap.Print;
 //import sample.ObjectMap.Print;
 import sample.ObjectMap.Sell;
 import sample.Peoples.People;
@@ -21,8 +22,28 @@ public class Map {
     			mapUniver[i][j] = 0;
     }
 
+    public void deicstraWay(int x, int y, int x2, int y2) {
+    	int i = 0;
+    	Corridor[] arrCor = new Corridor[2];
+    	for(Corridor corridor: _corridorsList) {
+    		if(corridor.getCoordX()+corridor.get_width() >= x && corridor.getCoordY()+corridor.get_height() >= y &&
+    				corridor.getCoordX() <= x && corridor.getCoordY() <= y) {
+    			arrCor[i++] = corridor;
+    		}
+    		if(corridor.getCoordX()+corridor.get_width() >= x2 && corridor.getCoordY()+corridor.get_height() >= y2&&
+    				corridor.getCoordX() <= x && corridor.getCoordY() <= y) {
+    			arrCor[i] = corridor;
+    		}
+    	}
+    	ArrayList<Corridor> buf = generationPath(arrCor[0], arrCor[1]);
+    	for(Group grop: _listGroup) {
+    		grop.setWey(buf);
+    	}
+    	
+    }
+    
     //РџРѕРёСЃРє РїСѓС‚Рё С‡РµСЂРµР· Р°Р»РіРѕСЂРёС‚Рј РґРµР№РєСЃС‚СЂС‹
-    ArrayList<Corridor> generationPath(Corridor c1, Corridor c2){
+    public ArrayList<Corridor> generationPath(Corridor c1, Corridor c2){
         c1.recirseDeicstra(0,null);   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃС‚РµРїРµРЅРё
         ArrayList<Corridor> listPatch = new ArrayList<Corridor>();
         int sum = c2.getDegree();   //РџРѕР»СѓС‡Р°РµРј РґР»РёРЅСѓ РїСѓС‚Рё
@@ -36,22 +57,34 @@ public class Map {
 
     //Р—Р°РїСѓСЃРєР°РµС‚СЃСЏ С‚Р°Р№РјРµСЂРѕРј РєР°Р¶РґСѓСЋ СЃРµРєСѓРЅРґСѓ
     public void update(){
-        for(Corridor corridor: _corridorsList){
+        for(Corridor corridor: get_corridorsList()){
             corridor.updateTick();
+        }
+        for(Audience audience: get_audinceList()){
+            audience.updateTick();
         }
     }
     
+    
+    
     public void setCorridor(Corridor corridor) {
-    	_corridorsList.add(corridor);
+    	for(Corridor corridor1: _corridorsList){
+    	    if(corridor1 != corridor){
+    	        if(corridor.belongsCoordC(corridor1.getCoordX(),corridor1.getCoordY(), corridor1.get_width(), corridor1.get_height())){
+                    corridor.setCorridor(corridor1);
+                }
+            }
+        }
+    	get_corridorsList().add(corridor);
     }
     public void setAudince(Audience audince) {
-        _audinceList.add(audince);
+        get_audinceList().add(audince);
     }
     public void setPrint(Print print) {
         boolean find = false;
-        for(Corridor corridor: _corridorsList){
-            if(corridor.belongsCoord(print) == true){
-                corridor.setObject(print);
+        for(Corridor corridor: get_corridorsList()){
+            if(corridor.belongsCoord(print)){
+                corridor.setPrint(print);
                 find = true;
                 break;
             }
@@ -63,11 +96,27 @@ public class Map {
             alert.show();
         }
     }
+    public void setInput(int x,int y, int width, int height){
+        boolean find = false;
+        for(Corridor corridor: get_corridorsList()){
+            if(corridor.belongsCoord(x,y,width,height) == true){
+                corridor.setInput(x,y,width,height);
+                find = true;
+                break;
+            }
+        }
+        if(find == false){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Предупреждение");
+            alert.setContentText("Сдесь нельзя расположить вход!");
+            alert.show();
+        }
+    }
     public void setSell(Sell sell) {
         boolean find = false;
-        for(Corridor corridor: _corridorsList){
+        for(Corridor corridor: get_corridorsList()){
             if(corridor.belongsCoord(sell) == true){
-                corridor.setObject(sell);
+                corridor.setSell(sell);
                 find = true;
                 break;
             }
@@ -108,25 +157,59 @@ public class Map {
             file.flush();*/
         
     }
-    		
+    public void creatPiople(People peope){
+    	System.out.println("Добавляем студента в коридор");
+        boolean yes = false;    //Если есть кориидор со входом
+        for(Corridor corridor: _corridorsList){
+            if(corridor.input == true)  //Если в коридоре есть вход
+            {
+            	corridor.setPeople(peope);
+                yes = true;
+                break;
+            }
+        }
+        if(yes == false)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Предупреждение");
+            alert.setContentText("Нет входа для людей. Человек погиб");
+            alert.show();
+            return;
+        }
+        //Random rnd = new Random(System.currentTimeMillis());
+        //Corridor buf = _corridorsList.get(rnd.nextInt(_corridorsList.size()));
+        //if(buf.input == false)
+          //  creatPiople(peope);
+        //else
+            //buf.setPeople(peope);
+    }
+
     public int getWidth() {
 		return width;
 	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
+    public int getHeight() {
 		return height;
 	}
+    public void setSizeMap(int widthMap, int heightMap){
+        width = widthMap;
+        height = heightMap;
+    }
 
-	public void setHeight(int height) {
-		this.height = height;
+	public ArrayList<Corridor> get_corridorsList() {
+		return _corridorsList;
 	}
 
-	private int width = 30;
-    private int height = 30;
+	public ArrayList<Audience> get_audinceList() {
+		return _audinceList;
+	}
+
+	public void setGroop(ArrayList<Group> listGroup) {
+		_listGroup = listGroup;
+	}
+
+    private ArrayList<Group> _listGroup = new ArrayList<Group>();
+	private int width = 60;
+    private int height = 60;
     private int[][] mapUniver;
     private ArrayList<Corridor> _corridorsList = new ArrayList<Corridor>();
     private ArrayList<Audience> _audinceList = new ArrayList<Audience>();
